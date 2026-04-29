@@ -2,7 +2,6 @@
 
 A web-based application that detects whether a news article is **REAL or FAKE** using **Natural Language Processing (NLP)** and **Machine Learning**. Built with Python, Flask, scikit-learn, and NLTK.
 
-> **3rd Year Major Project — B.Tech CSE**
 
 ---
 
@@ -207,11 +206,11 @@ jupyter notebook notebooks/EDA_and_Training.ipynb
 
 | Name | Roll Number |
 |------|-------------|
-| [Your Name] | [Your Roll No.] |
-| [Team Member 2] | [Roll No.] |
-| [Team Member 3] | [Roll No.] |
+| TANMAY YADAV | 23BAI71457 |
+| SIMAR | 23BAI70318 |
+| NEVIA SANDHU | 23BAI70349 |
 
-**Guided by:** [Supervisor Name], [Department Name]
+**Guided by:** Ms. KAMLAJEET KAUR, AIT CSE 
 
 ---
 
@@ -221,4 +220,3 @@ This project is for educational purposes as part of a university major project.
 
 ---
 
-*Made with ❤️ for B.Tech CSE Major Project*
