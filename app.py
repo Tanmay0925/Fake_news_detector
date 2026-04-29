@@ -90,6 +90,8 @@ def about():
 def team():
     return render_template('team.html')
 
+# Load model when module is imported (works with both gunicorn and python app.py)
+load_model()
+
 if __name__ == '__main__':
-    load_model()
     app.run(debug=True)
