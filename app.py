@@ -86,6 +86,10 @@ def predict():
 def about():
     return render_template('about.html')
 
+@app.route('/team')
+def team():
+    return render_template('team.html')
+
 if __name__ == '__main__':
     load_model()
     app.run(debug=True)

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team – Fake News Detector</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0a0a0f; --surface:#13131a; --border:#2a2a3a; --accent:#00e5ff; --danger:#ff3b6b; --success:#00e676; --text:#e8e8f0; --muted:#6b6b85; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; min-height:100vh; display:flex; flex-direction:column; }
+    body::before { content:''; position:fixed; inset:0; background-image: linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px), linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; z-index:0; }
+    nav { position:relative; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 2.5rem; border-bottom:1px solid var(--border); }
+    .logo { font-family:'Space Mono',monospace; font-size:1rem; color:var(--accent); text-decoration:none; letter-spacing:0.1em; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:0.85rem; margin-left:2rem; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--text); }
+
+    main { position:relative; z-index:1; flex:1; padding:4rem 2rem; max-width:900px; margin:0 auto; width:100%; }
+
+    .page-header { margin-bottom:3.5rem; }
+    .page-tag { font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; color:var(--accent); display:block; margin-bottom:0.8rem; }
+    .page-header h1 { font-size:clamp(2rem,4vw,3rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em; }
+    .page-header h1 span { color:var(--accent); }
+    .page-header p { color:var(--muted); font-size:1rem; margin-top:0.8rem; line-height:1.6; max-width:480px; }
+
+    /* Team cards */
+    .team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; margin-bottom:4rem; }
+    .dev-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:2rem; position:relative; overflow:hidden; transition:border-color 0.2s, transform 0.2s; }
+    .dev-card:hover { transform:translateY(-3px); }
+    .dev-card.tanmay { border-top:2px solid var(--accent); }
+    .dev-card.simar  { border-top:2px solid #a78bfa; }
+    .dev-card.nevia  { border-top:2px solid var(--success); }
+    .dev-card::before { content:''; position:absolute; top:0; left:0; right:0; height:60px; opacity:0.04; }
+    .dev-card.tanmay::before { background:var(--accent); }
+    .dev-card.simar::before  { background:#a78bfa; }
+    .dev-card.nevia::before  { background:var(--success); }
+
+    .avatar { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:800; margin-bottom:1.2rem; }
+    .dev-card.tanmay .avatar { background:rgba(0,229,255,0.12); color:var(--accent); }
+    .dev-card.simar  .avatar { background:rgba(167,139,250,0.12); color:#a78bfa; }
+    .dev-card.nevia  .avatar { background:rgba(0,230,118,0.12); color:var(--success); }
+
+    .dev-name { font-size:1.3rem; font-weight:800; margin-bottom:0.2rem; }
+    .dev-uid  { font-family:'Space Mono',monospace; font-size:0.72rem; color:var(--muted); margin-bottom:1rem; letter-spacing:0.05em; }
+    .dev-role { font-size:0.88rem; color:var(--muted); line-height:1.6; margin-bottom:1.2rem; }
+
+    .tag-list { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .tag { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.05em; padding:0.25rem 0.6rem; border-radius:6px; }
+    .dev-card.tanmay .tag { background:rgba(0,229,255,0.08); color:var(--accent); border:1px solid rgba(0,229,255,0.2); }
+    .dev-card.simar  .tag { background:rgba(167,139,250,0.08); color:#a78bfa; border:1px solid rgba(167,139,250,0.2); }
+    .dev-card.nevia  .tag { background:rgba(0,230,118,0.08); color:var(--success); border:1px solid rgba(0,230,118,0.2); }
+
+    /* Project info strip */
+    .project-strip { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1.5rem; }
+    .strip-item { }
+    .strip-label { font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; color:var(--muted); margin-bottom:0.4rem; }
+    .strip-value { font-size:0.95rem; font-weight:700; }
+
+    footer { position:relative; z-index:1; text-align:center; padding:1.5rem; font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--muted); border-top:1px solid var(--border); margin-top:auto; }
+    footer a { color:var(--accent); text-decoration:none; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">// FAKE-NEWS-DETECTOR</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/team">Team</a>
+  </div>
+</nav>
+
+<main>
+  <div class="page-header">
+    <span class="page-tag">// THE PEOPLE BEHIND THIS</span>
+    <h1>Meet the <span>Devs</span></h1>
+    <p>Three B.E. CSE (AI&ML) students from Chandigarh University who built this fake news detection system from scratch.</p>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- Tanmay -->
+    <div class="dev-card tanmay">
+      <div class="avatar">T</div>
+      <div class="dev-name">Tanmay Yadav</div>
+      <div class="dev-uid">UID · 23BAI71457</div>
+      <div class="dev-role">Led the backend development, Flask REST API, and model training pipeline. Handled dataset preprocessing and TF-IDF vectorization configuration.</div>
+      <div class="tag-list">
+        <span class="tag">Flask</span>
+        <span class="tag">ML Pipeline</span>
+        <span class="tag">TF-IDF</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+
+    <!-- Simar -->
+    <div class="dev-card simar">
+      <div class="avatar">S</div>
+      <div class="dev-name">Simar</div>
+      <div class="dev-uid">UID · 23BAI70318</div>
+      <div class="dev-role">Worked on the NLP preprocessing pipeline, NLTK integration, and model evaluation. Contributed to the research and literature review for the project report.</div>
+      <div class="tag-list">
+        <span class="tag">NLP</span>
+        <span class="tag">NLTK</span>
+        <span class="tag">Research</span>
+        <span class="tag">scikit-learn</span>
+      </div>
+    </div>
+
+    <!-- Nevia -->
+    <div class="dev-card nevia">
+      <div class="avatar">N</div>
+      <div class="dev-name">Nevia</div>
+      <div class="dev-uid">UID · 23BAI70349</div>
+      <div class="dev-role">Designed and built the frontend web interface. Responsible for UI/UX, the confidence bar animation, and making the app look this clean.</div>
+      <div class="tag-list">
+        <span class="tag">HTML/CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">UI/UX</span>
+        <span class="tag">Frontend</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Project strip -->
+  <div class="project-strip">
+    <div class="strip-item">
+      <div class="strip-label">PROJECT</div>
+      <div class="strip-value">Fake News Detection using NLP</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-label">UNIVERSITY</div>
+      <div class="strip-value">Chandigarh University</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-label">PROGRAMME</div>
+      <div class="strip-value">B.E. CSE (AI & ML)</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-label">MODEL ACCURACY</div>
+      <div class="strip-value" style="color:var(--success)">95.32%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-label">DATASET</div>
+      <div class="strip-value">WELFake · 72,134 articles</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-label">GITHUB</div>
+      <div class="strip-value"><a href="https://github.com/Tanmay0925/Fake_news_detector" target="_blank" style="color:var(--accent);text-decoration:none;">Tanmay0925 ↗</a></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Built by <a href="/team">Tanmay · Simar · Nevia</a> &nbsp;·&nbsp; B.E. CSE (AI&ML) · Chandigarh University
+</footer>
+</body>
+</html>

@@ -52,6 +52,8 @@
     .spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(0,0,0,0.3); border-top-color:#000; border-radius:50%; animation:spin 0.7s linear infinite; vertical-align:middle; margin-right:6px; }
     @keyframes spin { to{transform:rotate(360deg)} }
     footer { position:relative; z-index:1; text-align:center; padding:1.5rem; font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--muted); border-top:1px solid var(--border); }
+    footer a { color:var(--accent); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
   </style>
 </head>
 <body>
@@ -60,11 +62,12 @@
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/about">About</a>
+    <a href="/team">Team</a>
   </div>
 </nav>
 <main>
   <div class="hero">
-    <div class="badge">NLP · MACHINE LEARNING · 3RD YEAR PROJECT</div>
+    <div class="badge">NLP · MACHINE LEARNING · B.E. CSE AI&ML</div>
     <h1>Detect <span>Fake News</span><br>with NLP</h1>
     <p class="subtitle">Paste any news article or headline below. Our model will classify it as real or fake using TF-IDF and Logistic Regression.</p>
   </div>
@@ -76,7 +79,9 @@
     <div id="result"></div>
   </div>
 </main>
-<footer>Fake News Detection using NLP &nbsp;·&nbsp; Major Project · 3rd Year B.Tech CSE</footer>
+<footer>
+  Built by <a href="/team">Tanmay · Simar · Nevia</a> &nbsp;·&nbsp; B.E. CSE (AI&ML) · Chandigarh University
+</footer>
 <script>
   const textarea = document.getElementById('newsText');
   const wordCount = document.getElementById('wordCount');

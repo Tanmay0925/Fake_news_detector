@@ -29,16 +29,21 @@
     .step-content h4 { font-size:0.95rem; font-weight:700; margin-bottom:0.2rem; }
     .step-content p { font-size:0.82rem; color:var(--muted); line-height:1.5; }
     footer { position:relative; z-index:1; text-align:center; padding:1.5rem; font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--muted); border-top:1px solid var(--border); }
+    footer a { color:var(--accent); text-decoration:none; }
   </style>
 </head>
 <body>
 <nav>
   <a href="/" class="logo">// FAKE-NEWS-DETECTOR</a>
-  <div class="nav-links"><a href="/">Home</a><a href="/about">About</a></div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/team">Team</a>
+  </div>
 </nav>
 <main>
   <h2>About <span>This Project</span></h2>
-  <p class="lead">A 3rd Year Major Project that uses Natural Language Processing (NLP) and Machine Learning to automatically classify news articles as real or fake.</p>
+  <p class="lead">A B.E. CSE (AI&ML) Major Project that uses Natural Language Processing and Machine Learning to automatically classify news articles as real or fake — built by Tanmay, Simar, and Nevia at Chandigarh University.</p>
 
   <div class="section-title">TECH STACK</div>
   <div class="grid">
@@ -57,6 +62,8 @@
     <div class="step"><div class="step-num">05</div><div class="step-content"><h4>Classification</h4><p>Logistic Regression model trained on labeled dataset predicts FAKE or REAL with confidence score.</p></div></div>
   </div>
 </main>
-<footer>Fake News Detection using NLP &nbsp;·&nbsp; Major Project · 3rd Year B.Tech CSE</footer>
+<footer>
+  Built by <a href="/team">Tanmay · Simar · Nevia</a> &nbsp;·&nbsp; B.E. CSE (AI&ML) · Chandigarh University
+</footer>
 </body>
 </html>
